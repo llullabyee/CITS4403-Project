@@ -3,6 +3,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 import seaborn as sns
 import os
+import csv
 
 from empiricaldist import Pmf
 from utils.utils import decorate, savefig
@@ -12,9 +13,14 @@ path = "../data"
 
 
 for filename in os.listdir(path):
-	if filename.endswith(".graphml"):
+	if filename.endswith(".csv"):
+		filepath = os.path.join(path, filename)
 		### real data
-		realData = nx.read_graphml(os.path.join(path, filename))
+		realData = nx.read_edgelist(
+			filepath,
+			delimiter=";",
+			data=(("weight", float),)
+		)
 		num_nodes = realData.number_of_nodes()
 		num_edges = realData.number_of_edges()
 		realDegrees = dict(realData.degree())
