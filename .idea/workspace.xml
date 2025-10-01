@@ -4,10 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3d683a86-ea6f-47a7-a6ef-825c9521de91" name="Changes" comment="start">
-      <change afterPath="$PROJECT_DIR$/data/Aarnet.graphml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ba_model_test.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/temp" beforeDir="false" />
+    <list default="true" id="3d683a86-ea6f-47a7-a6ef-825c9521de91" name="Changes" comment="added data, some very basic modelling with the BA model.">
+      <change afterPath="$PROJECT_DIR$/utils/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/utils/utils.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ba_model_test.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/ba_model_test.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -52,6 +53,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
     "git-widget-placeholder": "main",
+    "last_opened_file_path": "/Users/mos/PycharmProjects/CITS4403-Project/utils",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -62,6 +64,9 @@
   }
 }]]></component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/utils" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/data" />
       <recent name="$PROJECT_DIR$" />
@@ -85,7 +90,7 @@
       <updated>1757653680134</updated>
       <workItem from="1757653681184" duration="584000" />
       <workItem from="1757654274113" duration="738000" />
-      <workItem from="1759295220513" duration="1074000" />
+      <workItem from="1759295220513" duration="3664000" />
     </task>
     <task id="LOCAL-00001" summary="start">
       <option name="closed" value="true" />
@@ -103,7 +108,15 @@
       <option name="project" value="LOCAL" />
       <updated>1757654184130</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="added data, some very basic modelling with the BA model.">
+      <option name="closed" value="true" />
+      <created>1759297049849</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1759297049849</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -111,9 +124,10 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="start" />
-    <option name="LAST_COMMIT_MESSAGE" value="start" />
+    <MESSAGE value="added data, some very basic modelling with the BA model." />
+    <option name="LAST_COMMIT_MESSAGE" value="added data, some very basic modelling with the BA model." />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/CITS4403_Project$ba_model_test.coverage" NAME="ba_model_test Coverage Results" MODIFIED="1759296127826" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src" />
+    <SUITE FILE_PATH="coverage/CITS4403_Project$ba_model_test.coverage" NAME="ba_model_test Coverage Results" MODIFIED="1759296924385" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src" />
   </component>
 </project>
