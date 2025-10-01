@@ -34,6 +34,7 @@ for filename in os.listdir(path):
 
 
 		plt.figure(figsize=(8, 6))
+		options = dict(ls='', marker='.')
 
 		plt.subplot(2, 2, 1)
 		nx.draw(realData, node_size=20, node_color="skyblue", edge_color="gray", with_labels=False)
@@ -44,13 +45,13 @@ for filename in os.listdir(path):
 		plt.title(f"BA {filename}")
 
 		plt.subplot(2, 2, 3)
-		pmf_real.plot(label=filename, color='C0')
-		decorate(xlabel='Degree',ylabel='PMF')
+		pmf_real.plot(label=filename, color='C0', **options)
+		decorate(xscale='log', yscale='log',xlim=[1, 1e4],xlabel='Degree',ylabel='PMF')
 		plt.title(f"PMF {filename}")
 
 		plt.subplot(2, 2, 4)
-		pmf_ba.plot(label=f"BA {filename}", color='C1')
-		decorate(xlabel='Degree',ylabel='PMF')
+		pmf_ba.plot(label=f"BA {filename}", color='C1', **options)
+		decorate(xscale='log',yscale='log',xlim=[1, 1e4],xlabel='Degree',ylabel='PMF')
 		plt.title(f"PMF BA {filename}")
 
 		plt.show()

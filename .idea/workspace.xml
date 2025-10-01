@@ -4,9 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3d683a86-ea6f-47a7-a6ef-825c9521de91" name="Changes" comment="added data, some very basic modelling with the BA model.">
-      <change afterPath="$PROJECT_DIR$/utils/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/utils/utils.py" afterDir="false" />
+    <list default="true" id="3d683a86-ea6f-47a7-a6ef-825c9521de91" name="Changes" comment="added PMFs, BA model is still basic though, this is to be improved. Maybe implement HK algorithm and compare differences?">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ba_model_test.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/ba_model_test.py" afterDir="false" />
     </list>
@@ -90,7 +88,7 @@
       <updated>1757653680134</updated>
       <workItem from="1757653681184" duration="584000" />
       <workItem from="1757654274113" duration="738000" />
-      <workItem from="1759295220513" duration="3664000" />
+      <workItem from="1759295220513" duration="4302000" />
     </task>
     <task id="LOCAL-00001" summary="start">
       <option name="closed" value="true" />
@@ -116,7 +114,15 @@
       <option name="project" value="LOCAL" />
       <updated>1759297049849</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="added PMFs, BA model is still basic though, this is to be improved. Maybe implement HK algorithm and compare differences?">
+      <option name="closed" value="true" />
+      <created>1759314964428</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1759314964428</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -125,9 +131,10 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="start" />
     <MESSAGE value="added data, some very basic modelling with the BA model." />
-    <option name="LAST_COMMIT_MESSAGE" value="added data, some very basic modelling with the BA model." />
+    <MESSAGE value="added PMFs, BA model is still basic though, this is to be improved. Maybe implement HK algorithm and compare differences?" />
+    <option name="LAST_COMMIT_MESSAGE" value="added PMFs, BA model is still basic though, this is to be improved. Maybe implement HK algorithm and compare differences?" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/CITS4403_Project$ba_model_test.coverage" NAME="ba_model_test Coverage Results" MODIFIED="1759296924385" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src" />
+    <SUITE FILE_PATH="coverage/CITS4403_Project$ba_model_test.coverage" NAME="ba_model_test Coverage Results" MODIFIED="1759315423380" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src" />
   </component>
 </project>
