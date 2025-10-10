@@ -2,14 +2,17 @@ import networkx as nx
 import matplotlib.pyplot as plt
 import numpy as np
 import seaborn as sns
+import pandas as pd
 import os
+import sys
 
+sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__))))
 from empiricaldist import Pmf
-from utils.utils import decorate, savefig
+from utils.utils import decorate
 
 
 path = "../data"
-
+rows = []
 
 for filename in os.listdir(path):
 	if filename.endswith(".graphml"):
@@ -54,5 +57,32 @@ for filename in os.listdir(path):
 		decorate(xscale='log',yscale='log',xlim=[1, 1e4],xlabel='Degree',ylabel='PMF')
 		plt.title(f"PMF BA {filename}")
 
+		plt.savefig(f"../figures/{filename}.png")
 		plt.show()
 
+		try:
+			aspl_real = nx.average_shortest_path_length(realData)
+			aspl_ba = nx.average_shortest_path_length(baraAlbert)
+		except nx.NetworkXError:
+			aspl_real = "Disconnected graph"
+			aspl_ba = "Disconnected graph"
+
+		rows.append({
+			'Graph': filename,
+			'Random_f_c': 'placeholder',
+			'Targeted_f_c': 'placeholder',
+			'Avg Shortest Path Length': aspl_real,
+			'No. of Components': nx.number_connected_components(realData)
+		})
+
+		rows.append({
+			'Graph': f" BA {filename}",
+			'Random_f_c': 'placeholder',
+			'Targeted_f_c': 'placeholder',
+			'Avg Shortest Path Length': aspl_ba,
+			'No. of Components': nx.number_connected_components(baraAlbert)
+		})
+
+df = pd.DataFrame(rows)
+df.to_csv('../results/simulated_data.csv', index=False)
+print(df)
