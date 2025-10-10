@@ -1,22 +1,19 @@
 import networkx as nx
 import matplotlib.pyplot as plt
-import numpy as np
-import seaborn as sns
 import pandas as pd
 import os
-import sys
 from empiricaldist import Pmf
 from utils.utils import decorate
-from ba_functions import *
+from src.ba_functions import *
 from utils.graph_visualization import color_critical_nodes
 from src.heuristics import critical_fraction
 
 
 path = os.path.join(os.path.dirname(__file__),'..' ,'data')
-rows = []
-os.makedirs("../figures", exist_ok=True)
-os.makedirs("../results", exist_ok=True)
+os.makedirs(os.path.join(os.path.dirname(__file__),'..' ,'figures'), exist_ok=True)
+os.makedirs(os.path.join(os.path.dirname(__file__),'..' ,'results'), exist_ok=True)
 
+rows = []
 
 for filename in os.listdir(path):
 	if filename.endswith(".graphml"):

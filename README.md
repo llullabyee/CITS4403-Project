@@ -20,7 +20,7 @@ python -m .venv venv
 ```bash
 pip install -r requirements.txt
 ```
-4. To run a script from a module, for example for `src/ba_model_test` run the following from the project directory.
+4. To run a script from a module, for example for `src/ba_model_test` run the following from the **project directory**.
 ```bash
 python -m src.ba_model_test
 ```
