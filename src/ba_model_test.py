@@ -9,6 +9,7 @@ import sys
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__))))
 from empiricaldist import Pmf
 from utils.utils import decorate
+from ba_functions import *
 
 
 path = "../data"
@@ -36,7 +37,7 @@ for filename in os.listdir(path):
 		pmf_ba = Pmf.from_seq(bADegList)
 
 
-		plt.figure(figsize=(8, 6))
+		plt.figure(figsize=(19.2, 10.8))
 		options = dict(ls='', marker='.')
 
 		plt.subplot(2, 2, 1)
@@ -60,18 +61,12 @@ for filename in os.listdir(path):
 		plt.savefig(f"../figures/{filename}.png")
 		plt.show()
 
-		try:
-			aspl_real = nx.average_shortest_path_length(realData)
-			aspl_ba = nx.average_shortest_path_length(baraAlbert)
-		except nx.NetworkXError:
-			aspl_real = "Disconnected graph"
-			aspl_ba = "Disconnected graph"
 
 		rows.append({
 			'Graph': filename,
 			'Random_f_c': 'placeholder',
 			'Targeted_f_c': 'placeholder',
-			'Avg Shortest Path Length': aspl_real,
+			'Avg Shortest Path Length': safeASPL(realData),
 			'No. of Components': nx.number_connected_components(realData)
 		})
 
@@ -79,7 +74,7 @@ for filename in os.listdir(path):
 			'Graph': f" BA {filename}",
 			'Random_f_c': 'placeholder',
 			'Targeted_f_c': 'placeholder',
-			'Avg Shortest Path Length': aspl_ba,
+			'Avg Shortest Path Length': safeASPL(baraAlbert),
 			'No. of Components': nx.number_connected_components(baraAlbert)
 		})
 
