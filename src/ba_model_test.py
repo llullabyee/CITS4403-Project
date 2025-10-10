@@ -14,6 +14,9 @@ from ba_functions import *
 
 path = "../data"
 rows = []
+os.makedirs("../figures", exist_ok=True)
+os.makedirs("../results", exist_ok=True)
+
 
 for filename in os.listdir(path):
 	if filename.endswith(".graphml"):
