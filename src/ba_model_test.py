@@ -5,11 +5,11 @@ import seaborn as sns
 import pandas as pd
 import os
 import sys
-
-sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__))))
 from empiricaldist import Pmf
 from utils.utils import decorate
 from ba_functions import *
+from utils.graph_visualization import color_critical_nodes
+from src.heuristics import critical_fraction
 
 
 path = os.path.join(os.path.dirname(__file__),'..' ,'data')
@@ -34,21 +34,25 @@ for filename in os.listdir(path):
 		bADegrees = dict(baraAlbert.degree())
 		bADegList = list(bADegrees.values())
 
-
 		### create PMFs for these
 		pmf_real = Pmf.from_seq(realDegList)
 		pmf_ba = Pmf.from_seq(bADegList)
-
+		
+        # Get critical fraction
+		realCF = critical_fraction(realData)
+		bACF = critical_fraction(baraAlbert)
 
 		plt.figure(figsize=(19.2, 10.8))
 		options = dict(ls='', marker='.')
 
 		plt.subplot(2, 2, 1)
-		nx.draw(realData, node_size=20, node_color="skyblue", edge_color="gray", with_labels=False)
+		realData_colorMap = color_critical_nodes(realData, realCF[1], "skyblue")
+		nx.draw(realData, node_size=20, node_color=realData_colorMap, edge_color="gray", with_labels=False)
 		plt.title(filename)
 
 		plt.subplot(2, 2, 2)
-		nx.draw(baraAlbert, node_size=20, node_color="lightcoral", edge_color="gray", with_labels=False)
+		bA_colorMap = color_critical_nodes(baraAlbert, bACF[1], "lightcoral")
+		nx.draw(baraAlbert, node_size=20, node_color=bA_colorMap, edge_color="gray", with_labels=False)
 		plt.title(f"BA {filename}")
 
 		plt.subplot(2, 2, 3)
