@@ -12,7 +12,7 @@ from utils.utils import decorate
 from ba_functions import *
 
 
-path = "../data"
+path = os.path.join(os.path.dirname(__file__),'..' ,'data')
 rows = []
 os.makedirs("../figures", exist_ok=True)
 os.makedirs("../results", exist_ok=True)
