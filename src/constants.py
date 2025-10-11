@@ -9,3 +9,7 @@ DATASET_FILE_EXT = ".graphml"
 DATASET_PATH = os.path.join(os.path.dirname(__file__),'..' ,'data')
 FIGURES_PATH = os.path.join(os.path.dirname(__file__),'..' ,'figures')
 RESULTS_PATH = os.path.join(os.path.dirname(__file__),'..' ,'results')
+
+REAL_CSV_PATH = os.path.join(RESULTS_PATH, 'real.csv')
+BA_CSV_PATH = os.path.join(RESULTS_PATH, 'ba.csv')
+HK_CSV_PATH = os.path.join(RESULTS_PATH, 'hk.csv')
