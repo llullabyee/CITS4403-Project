@@ -1,3 +1,7 @@
+"""
+    This module is from:
+    https://github.com/AllenDowney/ThinkComplexity2/raw/master/notebooks/utils.py
+"""
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
