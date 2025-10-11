@@ -1,11 +1,13 @@
 import networkx as nx
 from typing import Optional
+import random
 
-def critical_fraction (graph: nx.Graph, threshold=0.5) -> Optional[tuple]: 
+def critical_fraction (graph: nx.Graph, randomFailure=True, threshold=0.5) -> Optional[tuple]:
     """
     Returns the critical fraction of nodes (the smallest number) that can be removed before,
     The largest connected component in the graph is proportionally lesser to the original graph by the threshold.
     @param: a networkx graph object
+    @param: random: whether the code performs a randomised node failure or targeted node attack.
     @param: an optional threshold for the critical fraction threshold
     @return: A tuple of the (fraction of nodes, list of removed nodes) or None (which should not be possible)
     """
@@ -15,14 +17,18 @@ def critical_fraction (graph: nx.Graph, threshold=0.5) -> Optional[tuple]:
 
     # 2. Order nodes in terms of degree - this ensures that the smallest number of nodes are selected
     # https://stackoverflow.com/a/48382895
-    sorted_nodes_by_degree = sorted(graph.degree, key=lambda x: x[1], reverse=True)
+    if randomFailure is True:
+        nodes_by_degree = list(graph.degree())
+        random.shuffle(nodes_by_degree)
+    else:
+        nodes_by_degree = sorted(graph.degree, key=lambda x: x[1], reverse=True)
 
     # 3. Track the removed nodes, and copy the original graph to remove nodes from it
     removed_nodes = []
     graph_remove = graph.copy()
 
     # 4. Remove each node
-    for node_entry in sorted_nodes_by_degree:
+    for node_entry in nodes_by_degree:
         node = node_entry[0]
         graph_remove.remove_node(node)
         removed_nodes.append(node)
@@ -37,4 +43,4 @@ def critical_fraction (graph: nx.Graph, threshold=0.5) -> Optional[tuple]:
                 node_frac = len (removed_nodes) / total_nodes
                 return (node_frac, removed_nodes)
         else:
-            return None
+            return (1.0, removed_nodes) # 1 indicates full disconnection

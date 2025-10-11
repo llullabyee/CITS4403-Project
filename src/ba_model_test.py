@@ -36,19 +36,21 @@ for filename in os.listdir(path):
 		pmf_ba = Pmf.from_seq(bADegList)
 		
         # Get critical fraction
-		realCF = critical_fraction(realData)
-		bACF = critical_fraction(baraAlbert)
+		realRCF, realRandNodeRemoved = critical_fraction(realData)
+		realTCF, realTargetNodeRemoved = critical_fraction(realData, False)
+		bARCF, bARandNodeRemoved = critical_fraction(baraAlbert)
+		bATCF, bATargetNodeRemoved = critical_fraction(baraAlbert, False)
 
 		plt.figure(figsize=(19.2, 10.8))
 		options = dict(ls='', marker='.')
 
 		plt.subplot(2, 2, 1)
-		realData_colorMap = color_critical_nodes(realData, realCF[1], "skyblue")
+		realData_colorMap = color_critical_nodes(realData, realTargetNodeRemoved, "skyblue")
 		nx.draw(realData, node_size=20, node_color=realData_colorMap, edge_color="gray", with_labels=False)
 		plt.title(filename)
 
 		plt.subplot(2, 2, 2)
-		bA_colorMap = color_critical_nodes(baraAlbert, bACF[1], "purple")
+		bA_colorMap = color_critical_nodes(baraAlbert, bATargetNodeRemoved, "purple")
 		nx.draw(baraAlbert, node_size=20, node_color=bA_colorMap, edge_color="gray", with_labels=False)
 		plt.title(f"BA {filename}")
 
@@ -68,16 +70,16 @@ for filename in os.listdir(path):
 
 		rows.append({
 			'Graph': filename,
-			'Random_f_c': 'placeholder',
-			'Targeted_f_c': 'placeholder',
+			'Random_f_c': realRCF,
+			'Targeted_f_c': realTCF,
 			'Avg Shortest Path Length': safeASPL(realData),
 			'No. of Components': nx.number_connected_components(realData)
 		})
 
 		rows.append({
 			'Graph': f" BA {filename}",
-			'Random_f_c': 'placeholder',
-			'Targeted_f_c': 'placeholder',
+			'Random_f_c': bARCF,
+			'Targeted_f_c': bATCF,
 			'Avg Shortest Path Length': safeASPL(baraAlbert),
 			'No. of Components': nx.number_connected_components(baraAlbert)
 		})
