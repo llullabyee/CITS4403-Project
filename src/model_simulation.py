@@ -5,9 +5,8 @@ import csv
 
 from empiricaldist import Pmf
 from utils.utils import decorate
-from src.ba_functions import *
-from utils.graph_visualization import color_critical_nodes
-from src.heuristics import critical_fraction
+from utils.graph_visualization import color_critical_nodes, plotter
+from src.heuristics import critical_fraction, safeASPL
 from src.constants import RANDOM_SEED, DATASET_PATH, FIGURES_PATH, RESULTS_PATH, DATASET_FILE_EXT, REAL_CSV_PATH, \
 	BA_CSV_PATH, HK_CSV_PATH
 
