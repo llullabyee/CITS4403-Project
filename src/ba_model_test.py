@@ -48,7 +48,7 @@ for filename in os.listdir(path):
 		plt.title(filename)
 
 		plt.subplot(2, 2, 2)
-		bA_colorMap = color_critical_nodes(baraAlbert, bACF[1], "lightcoral")
+		bA_colorMap = color_critical_nodes(baraAlbert, bACF[1], "purple")
 		nx.draw(baraAlbert, node_size=20, node_color=bA_colorMap, edge_color="gray", with_labels=False)
 		plt.title(f"BA {filename}")
 
