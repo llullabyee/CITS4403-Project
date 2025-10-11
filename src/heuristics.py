@@ -1,8 +1,8 @@
 import networkx as nx
-from typing import Optional
 import random
+from src.constants import RANDOM_SEED
 
-def critical_fraction (graph: nx.Graph, randomFailure=True, threshold=0.5) -> Optional[tuple]:
+def critical_fraction (graph: nx.Graph, randomFailure=True, threshold=0.5) -> tuple:
     """
     Returns the critical fraction of nodes (the smallest number) that can be removed before,
     The largest connected component in the graph is proportionally lesser to the original graph by the threshold.
@@ -19,6 +19,8 @@ def critical_fraction (graph: nx.Graph, randomFailure=True, threshold=0.5) -> Op
     # https://stackoverflow.com/a/48382895
     if randomFailure is True:
         nodes_by_degree = list(graph.degree())
+        # set the random seed
+        random.seed (RANDOM_SEED)
         random.shuffle(nodes_by_degree)
     else:
         nodes_by_degree = sorted(graph.degree, key=lambda x: x[1], reverse=True)
