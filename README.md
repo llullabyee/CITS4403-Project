@@ -15,7 +15,9 @@ cd CITS4403-Project
 2. Create a Python 3 virtual environment and activate it. For example, this command uses `python` `venv` to create a virtual environment called `.venv`.
 ```bash
 python -m .venv venv
+source .venv/bin/activate
 ```
+
 3. Install the requirements in `requirements.txt`. Using `pip`,
 ```bash
 pip install -r requirements.txt
