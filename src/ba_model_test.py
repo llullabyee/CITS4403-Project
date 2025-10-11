@@ -7,18 +7,18 @@ from utils.utils import decorate
 from src.ba_functions import *
 from utils.graph_visualization import color_critical_nodes
 from src.heuristics import critical_fraction
+from src.constants import RANDOM_SEED, DATASET_PATH, FIGURES_PATH, RESULTS_PATH, DATASET_FILE_EXT
 
 
-path = os.path.join(os.path.dirname(__file__),'..' ,'data')
-os.makedirs(os.path.join(os.path.dirname(__file__),'..' ,'figures'), exist_ok=True)
-os.makedirs(os.path.join(os.path.dirname(__file__),'..' ,'results'), exist_ok=True)
+os.makedirs(FIGURES_PATH, exist_ok=True)
+os.makedirs(RESULTS_PATH, exist_ok=True)
 
 rows = []
 
-for filename in os.listdir(path):
-	if filename.endswith(".graphml"):
+for filename in os.listdir(DATASET_PATH):
+	if filename.endswith(DATASET_FILE_EXT):
 		### real data
-		realData = nx.read_graphml(os.path.join(path, filename))
+		realData = nx.read_graphml(os.path.join(DATASET_PATH, filename))
 		num_nodes = realData.number_of_nodes()
 		num_edges = realData.number_of_edges()
 		realDegrees = dict(realData.degree())
@@ -27,7 +27,7 @@ for filename in os.listdir(path):
 
 		### BA Graph with same number of nodes as real data, and roughly the same degree as the real data (not exact)
 		m = max(1, min(num_nodes - 1, int(round(num_edges / num_nodes))))
-		baraAlbert = nx.barabasi_albert_graph(num_nodes, m)
+		baraAlbert = nx.barabasi_albert_graph(num_nodes, m, seed=RANDOM_SEED)
 		bADegrees = dict(baraAlbert.degree())
 		bADegList = list(bADegrees.values())
 
@@ -64,9 +64,8 @@ for filename in os.listdir(path):
 		decorate(xscale='log',yscale='log',xlim=[1, 1e4],xlabel='Degree',ylabel='PMF')
 		plt.title(f"PMF BA {filename}")
 
-		plt.savefig(f"../figures/{filename}.png")
+		plt.savefig(f"{os.path.join(FIGURES_PATH, filename)}.png")
 		plt.show()
-
 
 		rows.append({
 			'Graph': filename,
@@ -85,5 +84,5 @@ for filename in os.listdir(path):
 		})
 
 df = pd.DataFrame(rows)
-df.to_csv('../results/simulated_data.csv', index=False)
+df.to_csv(f'{os.path.join(RESULTS_PATH, "simulated_data.csv")}', index=False)
 print(df)
