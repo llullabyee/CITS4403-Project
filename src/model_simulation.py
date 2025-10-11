@@ -5,12 +5,12 @@ import csv
 
 from empiricaldist import Pmf
 from utils.utils import decorate
-from utils.graph_visualization import color_critical_nodes, plotter
+from utils.graph_visualisation import color_critical_nodes, model_plotter
 from src.heuristics import critical_fraction, safeASPL
-from src.constants import RANDOM_SEED, DATASET_PATH, FIGURES_PATH, RESULTS_PATH, DATASET_FILE_EXT, REAL_CSV_PATH, \
+from src.constants import RANDOM_SEED, DATASET_PATH, FIGURES_MODEL_PATH, RESULTS_PATH, DATASET_FILE_EXT, REAL_CSV_PATH, \
 	BA_CSV_PATH, HK_CSV_PATH
 
-os.makedirs(FIGURES_PATH, exist_ok=True)
+os.makedirs(FIGURES_MODEL_PATH, exist_ok=True)
 os.makedirs(RESULTS_PATH, exist_ok=True)
 
 with open(REAL_CSV_PATH, 'w', newline='') as real, \
@@ -76,15 +76,15 @@ with open(REAL_CSV_PATH, 'w', newline='') as real, \
 			plt.figure(figsize=(19.2, 10.8))
 			options = dict(ls='', marker='.')
 
-			plotter(231,realData,f"Real {dataTitle}","blue",realTargetNodeRemoved)
-			plotter(232,baraAlbert,f"BA {dataTitle}","purple",bATargetNodeRemoved)
-			plotter(233,holmesKim,f"HK {dataTitle}","green",hkTargetNodeRemoved)
+			model_plotter(231, realData, f"Real {dataTitle}", "blue", realTargetNodeRemoved)
+			model_plotter(232, baraAlbert, f"BA {dataTitle}", "purple", bATargetNodeRemoved)
+			model_plotter(233, holmesKim, f"HK {dataTitle}", "green", hkTargetNodeRemoved)
 
-			plotter(234,pmf_real,f"PMF Real {dataTitle}","blue",probMF=True)
-			plotter(235,pmf_ba,f"PMF BA {dataTitle}","purple",probMF=True)
-			plotter(236,pmf_hk,f"PMF HK {dataTitle}","green",probMF=True)
+			model_plotter(234, pmf_real, f"PMF Real {dataTitle}", "blue", probMF=True)
+			model_plotter(235, pmf_ba, f"PMF BA {dataTitle}", "purple", probMF=True)
+			model_plotter(236, pmf_hk, f"PMF HK {dataTitle}", "green", probMF=True)
 
-			plt.savefig(f"{os.path.join(FIGURES_PATH, dataTitle)}.png")
+			plt.savefig(f"{os.path.join(FIGURES_MODEL_PATH, dataTitle)}.png")
 			plt.close()
 
 			writer1.writerow([
