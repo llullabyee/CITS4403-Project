@@ -62,7 +62,6 @@ for filename in os.listdir(path):
 		plt.title(f"PMF BA {filename}")
 
 		plt.savefig(f"../figures/{filename}.png")
-		plt.show()
 
 
 		rows.append({
