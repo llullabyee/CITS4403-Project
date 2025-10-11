@@ -4,7 +4,6 @@
 import os
 
 RANDOM_SEED = 4403
-DATACOUNT = 261
 
 
 DATASET_FILE_EXT = ".graphml"
