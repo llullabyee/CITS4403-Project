@@ -30,9 +30,10 @@ This project aims to model the impact that random node failures and targeted nod
     └── __pycache__
 ```
 
+---
+
 ### Dataset
 [Internet Topology Zoo](https://github.com/sk2/topologyzoo/)
-
 
 ---
 
