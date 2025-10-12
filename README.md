@@ -1,6 +1,6 @@
 ## CITS4403 Project
 
----
+
 ### Description
 This project aims to model the impact that random node failures and targeted node attacks have on an internet backbone topology, utilising the Barabasi-Albert and Holme-Kim models to simulate this.
 
