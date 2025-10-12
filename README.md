@@ -30,14 +30,9 @@ This project aims to model the impact that random node failures and targeted nod
     └── __pycache__
 ```
 
-### Credits
-Dataset: [Internet Topology Zoo](https://github.com/sk2/topologyzoo/)
+### Dataset
+[Internet Topology Zoo](https://github.com/sk2/topologyzoo/)
 
-Utils: [Allen Downey's ThinkComplexity2](https://github.com/AllenDowney/ThinkComplexity2/raw/master/notebooks/utils.py)
-
-EmpiricalDist Library: [Allen Downey's EmpiricalDist](https://github.com/AllenDowney/empiricaldist)
-
-All other sources can be found in code comments.
 
 ---
 
