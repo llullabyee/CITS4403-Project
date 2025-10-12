@@ -25,9 +25,13 @@ This project aims to model the impact that random node failures and targeted nod
 ├── notebooks
 ├── results
 ├── src
-│   └── __pycache__
+│   ├── constants.py
+│   ├── data_visualisation.py
+│   ├── heuristics.py
+│   └── model_simulation.py
 └── utils
-    └── __pycache__
+    ├── graph_visualisation.py
+    └── utils.py
 ```
 
 ---
