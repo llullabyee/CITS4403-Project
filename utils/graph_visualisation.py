@@ -1,6 +1,9 @@
 import matplotlib.pyplot as plt
 import networkx as nx
 import os
+import numpy as np
+import pandas as pd
+import seaborn as sns
 
 from utils.utils import decorate
 from src.constants import FIGURES_VISUAL_PATH
@@ -28,6 +31,8 @@ def color_critical_nodes (graph, nodes, base_color, highlight_color='red'):
 			color_map.append(base_color)
 	return color_map
 
+
+
 def model_plotter(subplot,graph,title,baseColor,nodelist=None, probMF=False):
 	options = dict(ls='', marker='.')
 	plt.subplot(subplot)
@@ -38,6 +43,15 @@ def model_plotter(subplot,graph,title,baseColor,nodelist=None, probMF=False):
 		graph.plot(label=title, color=baseColor, **options)
 		decorate(xscale='log', yscale='log',xlim=[1, 1e4],xlabel='Degree',ylabel='PMF')
 	plt.title(title)
+
+
+def plot_models(configs, save_path, dataTitle):
+	plt.figure(figsize=(19.2, 10.8))
+	for i, (graph, label, color, target_nodes, pmf_data, probMF) in enumerate(configs, start=231):
+		model_plotter(i, graph, f"{label} {dataTitle}", color, target_nodes)
+		model_plotter(i+3, pmf_data, f"PMF {label} {dataTitle}", color, probMF=probMF)
+	plt.savefig(save_path)
+	plt.close()
 
 def cdf_plotter(real, ba, hk, title, x, y):
 	plt.figure(figsize=(19.2, 10.8))
@@ -63,4 +77,44 @@ def hist_plotter(real, ba, hk, title, x, y):
 	plt.xlabel(x)
 	plt.legend()
 	plt.savefig(f"{os.path.join(FIGURES_VISUAL_PATH, title)}.png")
+	plt.close()
+
+
+def visualize_network_metrics(real, ba, hk, suffix=""):
+	"""Plot CDF, histogram, and heatmap for the given datasets."""
+	# Unpack CSV data
+	realRCF, realTCF, realASPL, realACC, realCCs = real
+	bARCF, bATCF, bAASPL, bAACC, bACCs = ba
+	hkRCF, hkTCF, hkASPL, hkACC, hkCCs = hk
+
+	# Define metrics for iteration
+	metrics = [
+		("RCF", realRCF, bARCF, hkRCF, "Critical Fraction"),
+		("TCF", realTCF, bATCF, hkTCF, "Critical Fraction"),
+		("ASPL", realASPL, bAASPL, hkASPL, "Average Shortest Path Length"),
+		("ACC", realACC, bAACC, hkACC, "Average Clustering Coefficient")
+	]
+
+	# Plot CDF and histograms
+	for name, real_data, ba_data, hk_data, xlabel in metrics:
+		cdf_plotter(real_data, ba_data, hk_data,
+			    f"CDF - {name}{suffix}", xlabel, "Cumulative Probability")
+		hist_plotter(real_data, ba_data, hk_data,
+			     f"Histogram - {name}{suffix}", xlabel, "Probability Density")
+
+	# Heatmap
+	data = pd.DataFrame({
+		"Network": ["Real", "BA", "HK"],
+		"RCF": [np.mean(realRCF), np.mean(bARCF), np.mean(hkRCF)],
+		"TCF": [np.mean(realTCF), np.mean(bATCF), np.mean(hkTCF)],
+		"ASPL": [np.mean(realASPL), np.mean(bAASPL), np.mean(hkASPL)],
+		"ACC": [np.mean(realACC), np.mean(bAACC), np.mean(hkACC)],
+		"CCs": [np.mean(realCCs), np.mean(bACCs), np.mean(hkCCs)]
+	})
+	data.set_index("Network", inplace=True)
+
+	plt.figure(figsize=(9,5))
+	sns.heatmap(data, annot=True, cmap="coolwarm", fmt=".2f")
+	plt.title(f"Network Metrics Comparison{suffix}")
+	plt.savefig(os.path.join(FIGURES_VISUAL_PATH, f"Network Metrics Comparison{suffix}.png"))
 	plt.close()
