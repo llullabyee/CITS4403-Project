@@ -1,8 +1,12 @@
-## CITS4403 Project
+# CITS4403 Project
 
 
-### Description
+## Description
+
 This project aims to model the impact that random node failures and targeted node attacks have on an internet backbone topology, utilising the Barabasi-Albert and Holme-Kim models to simulate this and identify critical nodes.
+
+
+The modelling process and presentation of results is shown in [Node Criticality Simulation.ipynb](notebooks/Node%Criticality%Simulation.ipynb)
 
 ---
 
@@ -42,8 +46,10 @@ This project aims to model the impact that random node failures and targeted nod
 
 ### Dataset
 Real Internet backbone network topologies provided from [sk2/topologyzoo](https://github.com/sk2/topologyzoo/tree/master/sources). More information in this dataset can also be found [here](https://topology-zoo.org/dataset.html).
+These are the files in `data/`
 
 ---
+## Running Instructions
 
 ### Setup
 1. Clone this repository:
@@ -63,8 +69,6 @@ source .venv/bin/activate
 pip3 install -r requirements.txt
 ```
 
----
-
 ### Simulation Instructions
 Run the following command:
 ```bash
@@ -73,7 +77,6 @@ python3 -m src.model_simulation
 
 This will create graphs, found in the `notebooks/figures/models` directory, as well as CSVs containing the data of the simulation, found in the `notebooks/results` directory.
 
----
 
 ### Data Visualisation Instructions
 
@@ -84,3 +87,5 @@ python3 -m src.data_visualisation
 ```
 
 This will create graphs, found in the `notebooks/figures/visuals` directory.
+
+**Note:** the `-m` flag treats the the python project as a module, and will require the running of the scripts from the project directory level.
