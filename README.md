@@ -18,26 +18,30 @@ This project aims to model the impact that random node failures and targeted nod
 
 ```
 .
-├── data
-├── figures
-│   ├── models
-│   └── visuals
-├── notebooks
-├── results
-├── src
+├── data/
+├── notebooks/
+│   ├── Node Criticality Simulation.ipynb
+│   ├── results/
+|   ├── figures/
+|   |   ├── models/
+│   |   └── visuals/
+|   └── graph_visualisation.py
+├── src/
 │   ├── constants.py
 │   ├── data_visualisation.py
 │   ├── heuristics.py
 │   └── model_simulation.py
-└── utils
-    ├── graph_visualisation.py
-    └── utils.py
+├── utils/
+│   ├── graph_visualisation.py
+|   └── utils.py
+├── requirements.txt
+└── ReadMe.md
 ```
 
 ---
 
 ### Dataset
-[Internet Topology Zoo](https://github.com/sk2/topologyzoo/)
+Real Internet backbone network topologies provided from [sk2/topologyzoo](https://github.com/sk2/topologyzoo/tree/master/sources). More information in this dataset can also be found [here](https://topology-zoo.org/dataset.html).
 
 ---
 
@@ -64,10 +68,10 @@ pip3 install -r requirements.txt
 ### Simulation Instructions
 Run the following command:
 ```bash
-python3 -m src.model_simulation.py
+python3 -m src.model_simulation
 ```
 
-This will create graphs, found in the `figures/models` directory, as well as CSVs containing the data of the simulation, found in the `results` directory.
+This will create graphs, found in the `notebooks/figures/models` directory, as well as CSVs containing the data of the simulation, found in the `notebooks/results` directory.
 
 ---
 
@@ -76,7 +80,7 @@ This will create graphs, found in the `figures/models` directory, as well as CSV
 Run the following command:
 
 ```bash
-python3 -m src.data_visualisation.py
+python3 -m src.data_visualisation
 ```
 
-This will create graphs, found in the `figures/visuals` directory.
+This will create graphs, found in the `notebooks/figures/visuals` directory.
