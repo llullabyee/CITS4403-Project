@@ -8,15 +8,6 @@ This project aims to model the impact that random node failures and targeted nod
 
 The modelling process and presentation of results is shown in [Node Criticality Simulation.ipynb](notebooks/Node%Criticality%Simulation.ipynb)
 
----
-
-### Members
-| UWA ID   | Name          | Github User   |
-|----------|---------------|---------------|
-| 23101312 | Mos Hassanein | llullabyee    |
-| 23132836 | Ann  Roy      | developing-ar |
-
----
 
 ### Directory structure
 
