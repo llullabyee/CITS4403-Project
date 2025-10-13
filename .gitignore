@@ -1,5 +1,3 @@
 __pycache__
 .venv/**
-notebooks/**
-!notebooks/*.ipynb
-!notebooks/graph_visualisation.py
+notebooks/.ipynb_checkpoints/**
