@@ -15,4 +15,3 @@ RESULTS_PATH = os.path.join(os.path.dirname(__file__),'..' , 'notebooks','result
 REAL_CSV_PATH = os.path.join(RESULTS_PATH, 'real.csv')
 BA_CSV_PATH = os.path.join(RESULTS_PATH, 'ba.csv')
 HK_CSV_PATH = os.path.join(RESULTS_PATH, 'hk.csv')
-ER_CSV_PATH = os.path.join(RESULTS_PATH, 'er.csv')
